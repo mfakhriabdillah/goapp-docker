@@ -5,11 +5,14 @@ on:
       - master
 
 jobs:
-  build-push:
+  checkout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: listing files
         run: ls -la
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Run unit testing
         run: go test -v ./...
