@@ -33,4 +33,12 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: fakhriabdillah/goapp-docker:latest
+          tags: fakhriabdillah/goapp-docker:${{ github.run_number }}
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: whoami
