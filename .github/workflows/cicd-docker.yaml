@@ -47,4 +47,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: 22
           script: |
-            whoami
+            docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_TOKEN }}
+            docker pull fakhriabdillah/goapp-docker:${{ github.run_number }}
+            docker rm -f goapp
+            docker run --name goapp -d -p 80:8080 fakhriabdillah/goapp-docker:${{ github.run_number }}
