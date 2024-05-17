@@ -12,7 +12,7 @@ func main() {
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message":         "ok",
-			"app_version":     "2.0",
+			"app_version":     "3.0",
 			"app_description": "deploy app version 2.0 build 2",
 		})
 	})
